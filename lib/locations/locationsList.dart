@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/locationController.dart';
+import 'package:lunch_partner/home.dart';
 
 class LocationList extends StatefulWidget {
   const LocationList({Key? key}) : super(key:key);
@@ -33,14 +34,15 @@ class _LocationListState extends State<LocationList>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(177, 219, 238, 1),
+      backgroundColor: Color.fromRGBO(218, 216, 216, 1),
       appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             iconSize: 20.0,
             onPressed: () {
-              Navigator.pop(context);
-            },
+              Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
           ),
           centerTitle: true,
           title: Text('Location List')
@@ -59,5 +61,8 @@ class _LocationListState extends State<LocationList>{
             );
           }), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+  _goBack(BuildContext context) {
+    Navigator.pop(context);
   }
 }
