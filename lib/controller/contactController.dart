@@ -25,4 +25,35 @@ class ContactController {
     }
   }
 
+  Future<void> delete(String id) async {
+    try {
+      await firestore.collection("contacts").doc(id).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> update(String id, String name, String number) async {
+    try {
+      await firestore
+          .collection("contacts")
+          .doc(id)
+          .update({'name': name, 'number': number});
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> create(String name, String number) async {
+    try {
+      await firestore.collection("contacts").add({
+        'name': name,
+        'number': number,
+        'timestamps': FieldValue.serverTimestamp()
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
 }
