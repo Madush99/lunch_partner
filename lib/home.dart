@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+//import 'package:lunch_partner/form.dart';
 import 'package:lunch_partner/locations/locationsList.dart';
+import 'package:lunch_partner/meeting/meetingList.dart';
 
 import 'login.dart';
 import 'model/userModel.dart';
@@ -75,10 +77,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(builder: (context) => LocationList()));
                   }),
               ActionChip(
+                  label: Text("form"),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => MeetingList()));
+                  }),
+              ActionChip(
                   label: Text("Logout"),
                   onPressed: () {
                     logout(context);
                   }),
+
             ],
           ),
         ),
