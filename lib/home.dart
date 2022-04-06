@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lunch_partner/contacts/contactsList.dart';
 import 'package:lunch_partner/locations/locationsList.dart';
+import 'package:lunch_partner/meeting/meetingList.dart';
 
 import 'login.dart';
 import 'model/userModel.dart';
@@ -68,11 +70,18 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 15,
               ),
+
               ActionChip(
-                  label: Text("View Locations"),
+                  label: Text("View Contacts"),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LocationList()));
+                        MaterialPageRoute(builder: (context) => ContactList()));
+                  }),
+              ActionChip(
+                  label: Text("View Meetings"),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => MeetingList()));
                   }),
               ActionChip(
                   label: Text("Logout"),
