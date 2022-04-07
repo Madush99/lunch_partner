@@ -14,12 +14,17 @@ class ViewContact extends StatefulWidget {
 class _ViewContactState extends State<ViewContact> {
   TextEditingController nameController = new TextEditingController();
   TextEditingController numberController = new TextEditingController();
+  TextEditingController addressController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+
   @override
   void initState() {
     super.initState();
     print(widget.contact);
     nameController.text = widget.contact['name'];
     numberController.text = widget.contact['number'];
+    addressController.text = widget.contact['address'];
+    emailController.text = widget.contact['email'];
   }
 
   @override
@@ -59,6 +64,22 @@ class _ViewContactState extends State<ViewContact> {
                 decoration: inputDecoration("Contact Number"),
                 controller: numberController,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Address"),
+                controller: addressController,
+              ), SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Email"),
+                controller: emailController,
+              ),
+
             ],
           ),
         ),
@@ -72,7 +93,7 @@ class _ViewContactState extends State<ViewContact> {
               color: Colors.red,
               onPressed: () {
                 widget.db.update(widget.contact['id'], nameController.text,
-                    numberController.text);
+                    numberController.text,addressController.text,emailController.text);
                 Navigator.pop(context, true);
               },
               child: Text(

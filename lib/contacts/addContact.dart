@@ -14,6 +14,8 @@ class AddContact extends StatefulWidget {
 class _AddContactState extends State<AddContact> {
   TextEditingController nameController = new TextEditingController();
   TextEditingController numberController = new TextEditingController();
+  TextEditingController addressController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -53,6 +55,22 @@ class _AddContactState extends State<AddContact> {
                 decoration: inputDecoration("Contact Number"),
                 controller: numberController,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Address"),
+                controller: addressController,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Email"),
+                controller: emailController,
+              ),
             ],
           ),
         ),
@@ -65,7 +83,7 @@ class _AddContactState extends State<AddContact> {
           child: RaisedButton(
               color: Colors.red,
               onPressed: () {
-                widget.db.create(nameController.text, numberController.text);
+                widget.db.create(nameController.text, numberController.text, addressController.text, emailController.text);
                 Navigator.pop(context, true);
               },
               child: Text(

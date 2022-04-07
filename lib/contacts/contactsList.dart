@@ -59,7 +59,7 @@ class _ContactListState extends State<ContactList>{
                 },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['name']),
-                // trailing: Text(docs[index]['number']),
+                trailing: Text(docs[index]['number']),
               ),
             );
           }),
