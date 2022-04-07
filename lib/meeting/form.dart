@@ -1,7 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lunch_partner/controller/contactController.dart';
 import 'package:lunch_partner/controller/meetingController.dart';
 
 class AddMeeting extends StatefulWidget {
