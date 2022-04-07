@@ -63,7 +63,7 @@ class _AddContactState extends State<AddContact> {
         child: BottomAppBar(
           color: Colors.transparent,
           child: RaisedButton(
-              color: Colors.black,
+              color: Colors.red,
               onPressed: () {
                 widget.db.create(nameController.text, numberController.text);
                 Navigator.pop(context, true);
@@ -93,7 +93,7 @@ class _AddContactState extends State<AddContact> {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25.0),
         borderSide: BorderSide(
-          color: Colors.black,
+          color: Colors.red,
           width: 2.0,
         ),
       ),

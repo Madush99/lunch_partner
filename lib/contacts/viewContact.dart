@@ -69,7 +69,7 @@ class _ViewContactState extends State<ViewContact> {
         child: BottomAppBar(
           color: Colors.transparent,
           child: RaisedButton(
-              color: Colors.black,
+              color: Colors.red,
               onPressed: () {
                 widget.db.update(widget.contact['id'], nameController.text,
                     numberController.text);
