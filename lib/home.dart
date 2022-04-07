@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lunch_partner/contacts/contactsList.dart';
 import 'package:lunch_partner/locations/locationsList.dart';
-import 'package:lunch_partner/meeting/meetingList.dart';
+import 'package:lunch_partner/profile.dart';
 
+import 'contacts/contactsList.dart';
 import 'login.dart';
+import 'meeting/meetingList.dart';
 import 'model/userModel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -70,7 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 15,
               ),
-
               ActionChip(
                   label: Text("View Contacts"),
                   onPressed: () {
@@ -82,6 +82,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => MeetingList()));
+                  }),
+              ActionChip(
+                  label: Text("Profile"),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  }),
+              ActionChip(
+                  label: Text("location"),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => LocationList()));
                   }),
               ActionChip(
                   label: Text("Logout"),
