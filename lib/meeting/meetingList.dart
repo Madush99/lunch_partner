@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/meetingController.dart';
 import 'package:lunch_partner/home.dart';
 import 'package:lunch_partner/meeting/form.dart';
+import 'package:lunch_partner/meeting/viewMeeting.dart';
 
 //import 'package:lunch_partner/form.dart';
 
@@ -56,7 +57,9 @@ class _MeetingListState extends State<MeetingList>{
             return Card(
               margin: EdgeInsets.all(10),
               child: ListTile(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewMeeting(meeting:docs[index],db:db)));
+                },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['title']),
                 trailing: Text(docs[index]['location']),

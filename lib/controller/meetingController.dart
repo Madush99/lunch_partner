@@ -40,5 +40,24 @@ class MeetingController {
     }
   }
 
+  Future<void> delete(String id) async {
+    try {
+      await firestore.collection("meeting").doc(id).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> update(String id, String title, String location) async {
+    try {
+      await firestore
+          .collection("meeting")
+          .doc(id)
+          .update({'title': title, 'location': location});
+    } catch (e) {
+      print(e);
+    }
+  }
+
 
 }
