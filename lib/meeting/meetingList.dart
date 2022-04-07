@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/meetingController.dart';
 import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/meeting/form.dart';
 
 //import 'package:lunch_partner/form.dart';
 
@@ -62,8 +63,22 @@ class _MeetingListState extends State<MeetingList>{
 
               ),
             );
-          }), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    AddMeeting(db: db)))
+            .then((value) => {
+          if(value != null) {
+            initialise()
+          }
+        });},
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );// This trailing comma makes auto-formatting nicer for build methods.
   }
   _goBack(BuildContext context) {
     Navigator.pop(context);

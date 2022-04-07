@@ -69,7 +69,7 @@ class _AddContactState extends State<AddContact> {
                 Navigator.pop(context, true);
               },
               child: Text(
-                "Save",
+                "Add",
                 style: TextStyle(color: Colors.white),
               )),
         ),
