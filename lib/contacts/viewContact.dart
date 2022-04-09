@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/adminHome.dart';
 import '../controller/contactController.dart';
 
 class ViewContact extends StatefulWidget {

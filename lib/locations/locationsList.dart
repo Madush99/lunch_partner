@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/locationController.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/adminHome.dart';
 import 'package:lunch_partner/locations/addLocation.dart';
 import 'package:lunch_partner/locations/updateLocation.dart';
 
@@ -43,7 +43,7 @@ class _LocationListState extends State<LocationList>{
             iconSize: 20.0,
             onPressed: () {
               Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => HomeScreen()));
+              MaterialPageRoute(builder: (context) => AdminHome()));
                 },
           ),
           centerTitle: true,

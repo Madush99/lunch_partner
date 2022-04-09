@@ -9,14 +9,14 @@ import 'login.dart';
 import 'meeting/meetingList.dart';
 import 'model/userModel.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class UserHome extends StatefulWidget {
+  const UserHome({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _UserHomeState createState() => _UserHomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UserHomeState extends State<UserHome> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 

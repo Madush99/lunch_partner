@@ -3,8 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/adminHome.dart';
 import 'package:lunch_partner/locations/locationsList.dart';
+import 'package:lunch_partner/userHome.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -170,11 +171,11 @@ class _LoginScreenState extends State<LoginScreen> {
               if(email == "admin@gmail.com"){
                 Fluttertoast.showToast(msg: "Login Successful"),
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomeScreen())),
+                    MaterialPageRoute(builder: (context) => AdminHome())),
               }else {
                 Fluttertoast.showToast(msg: "Login Successful"),
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => LocationList())),
+                    MaterialPageRoute(builder: (context) => UserHome())),
               }
         });
       } on FirebaseAuthException catch (error) {

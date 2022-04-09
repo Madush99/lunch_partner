@@ -6,14 +6,14 @@ import 'package:lunch_partner/locations/locationsList.dart';
 import 'login.dart';
 import 'model/userModel.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class AdminHome extends StatefulWidget {
+  const AdminHome({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _AdminHomeState createState() => _AdminHomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _AdminHomeState extends State<AdminHome> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 

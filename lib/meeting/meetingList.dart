@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/meetingController.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/adminHome.dart';
 import 'package:lunch_partner/meeting/form.dart';
 import 'package:lunch_partner/meeting/viewMeeting.dart';
 
@@ -45,7 +45,7 @@ class _MeetingListState extends State<MeetingList>{
             iconSize: 20.0,
             onPressed: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => AdminHome()));
             },
           ),
           centerTitle: true,
