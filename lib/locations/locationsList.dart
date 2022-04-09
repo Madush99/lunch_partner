@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/locationController.dart';
 import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/locations/addLocation.dart';
+import 'package:lunch_partner/locations/updateLocation.dart';
 
 class LocationList extends StatefulWidget {
   const LocationList({Key? key}) : super(key:key);
@@ -53,13 +55,36 @@ class _LocationListState extends State<LocationList>{
             return Card(
               margin: EdgeInsets.all(10),
               child: ListTile(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              UpdateLocation(locations: docs[index],db: db)))
+                      .then((value) => {
+                    if(value != null) {initialise()}
+                  });
+                },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['name']),
                 trailing: Text(docs[index]['city']),
               ),
             );
-          }), // This trailing comma makes auto-formatting nicer for build methods.
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    AddLocation(db: db)))
+            .then((value) => {
+          if(value != null) {
+            initialise()
+          }
+        });},
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
   _goBack(BuildContext context) {

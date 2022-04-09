@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Welcome"),
+        title: const Text("Welcome To Lunch Buddy"),
         centerTitle: true,
       ),
       body: Center(
@@ -49,18 +49,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Image.asset("assets/logo.png", fit: BoxFit.contain),
               ),
               Text(
-                "Welcome Back",
+                "Welcome To Lunch Buddy Admin",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
-              Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
+              Text("",
                   style: TextStyle(
                     color: Colors.black54,
                     fontWeight: FontWeight.w500,
                   )),
-              Text("${loggedInUser.email}",
+              Text("",
                   style: TextStyle(
                     color: Colors.black54,
                     fontWeight: FontWeight.w500,
@@ -69,13 +69,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 15,
               ),
               ActionChip(
-                  label: Text("View Locations"),
+                  label: Text("Handle Locations"),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => LocationList()));
                   }),
               ActionChip(
-                  label: Text("Logout"),
+                  label: Text("Handle Contacts"),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => LocationList()));
+                  }),
+              ActionChip(
+                  label: Text("Handle Users"),
+                  onPressed: () {
+                    logout(context);
+                  }),
+              ActionChip(
+                  label: Text("Admin Profile"),
+                  onPressed: () {
+                    logout(context);
+                  }),
+              ActionChip(
+                  label: Text("Handle Meetings"),
+                  onPressed: () {
+                    logout(context);
+                  }),
+              ActionChip(
+                  label: Text("Log out"),
                   onPressed: () {
                     logout(context);
                   }),
