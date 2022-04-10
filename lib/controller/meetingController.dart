@@ -49,7 +49,7 @@ class MeetingController {
       print(e);
     }
   }
-
+//ff
   Future<void> update(String id, String title, String location, String date, String time) async {
     try {
       await firestore
