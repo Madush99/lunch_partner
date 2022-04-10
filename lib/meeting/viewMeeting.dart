@@ -14,6 +14,9 @@ class ViewMeeting extends StatefulWidget {
 class _ViewMeetingState extends State<ViewMeeting> {
   TextEditingController titleController = new TextEditingController();
   TextEditingController locationController = new TextEditingController();
+  TextEditingController dateController = new TextEditingController();
+  TextEditingController timeController = new TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -58,6 +61,22 @@ class _ViewMeetingState extends State<ViewMeeting> {
                 style: TextStyle(color: Colors.black),
                 decoration: inputDecoration("Location"),
                 controller: locationController,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Date"),
+                controller: dateController,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Time"),
+                controller: timeController,
               ),
             ],
           ),
