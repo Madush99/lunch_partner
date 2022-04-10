@@ -17,7 +17,7 @@ class MeetingController {
       querySnapshot = await firestore.collection('meeting').orderBy('timestamp').get();
       if(querySnapshot.docs.isNotEmpty){
         for(var doc in querySnapshot.docs.toList()){
-          Map a = {"id":doc.id, "title": doc['title'], "location":doc["location"], "date":doc["date"], "time":doc["time"]};
+          Map a = {"id":doc.id, "title": doc['title'], "location":doc["location"] };
           docs.add(a);
         }
         return docs;
