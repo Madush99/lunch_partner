@@ -28,11 +28,13 @@ class MeetingController {
   }
 
 
-  Future<void> create(String title, String location) async {
+  Future<void> create(String title, String location, String date, String time) async {
     try {
       await firestore.collection("meeting").add({
         'title': title,
         'location': location,
+        'date': date,
+        'time': time,
         'timestamp': FieldValue.serverTimestamp()
       });
     } catch (e) {

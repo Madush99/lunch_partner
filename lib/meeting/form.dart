@@ -18,6 +18,9 @@ class AddMeeting extends StatefulWidget {
 class _AddMeetingState extends State<AddMeeting> {
   TextEditingController titleController = new TextEditingController();
   TextEditingController locationController = new TextEditingController();
+  TextEditingController dateController = new TextEditingController();
+  TextEditingController timeController = new TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -57,25 +60,21 @@ class _AddMeetingState extends State<AddMeeting> {
                 decoration: inputDecoration("Location"),
                 controller: locationController,
               ),
-              Container(
-                margin: EdgeInsets.all(25),
-                child: FlatButton(
-                  child: Text('Date', style: TextStyle(fontSize: 20.0),),
-                  color: Colors.redAccent,
-                  textColor: Colors.white,
-                  onPressed: () {Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Datepicker ()));},
-                ),
+              SizedBox(
+                height: 20,
               ),
-              Container(
-                margin: EdgeInsets.all(25),
-                child: FlatButton(
-                  child: Text('Time', style: TextStyle(fontSize: 20.0),),
-                  color: Colors.redAccent,
-                  textColor: Colors.white,
-                  onPressed: () {Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => TimePicker()));},
-                ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Date"),
+                controller: dateController,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Time"),
+                controller: timeController,
               ),
             ],
 
@@ -93,7 +92,7 @@ class _AddMeetingState extends State<AddMeeting> {
           child: RaisedButton(
               color: Colors.black,
               onPressed: () {
-                widget.db.create(titleController.text, locationController.text);
+                widget.db.create(titleController.text, locationController.text,dateController.text,timeController.text);
                 Navigator.pop(context, true);
               },
 
