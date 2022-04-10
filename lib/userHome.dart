@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lunch_partner/locationListHome.dart';
 import 'package:lunch_partner/locations/locationsList.dart';
 import 'package:lunch_partner/profile.dart';
 
@@ -93,7 +94,7 @@ class _UserHomeState extends State<UserHome> {
                   label: Text("location"),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LocationList()));
+                        MaterialPageRoute(builder: (context) => LocationListHome()));
                   }),
               ActionChip(
                   label: Text("Logout"),
