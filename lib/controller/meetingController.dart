@@ -50,12 +50,12 @@ class MeetingController {
     }
   }
 
-  Future<void> update(String id, String title, String location) async {
+  Future<void> update(String id, String title, String location, String date, String time) async {
     try {
       await firestore
           .collection("meeting")
           .doc(id)
-          .update({'title': title, 'location': location});
+          .update({'title': title, 'location': location,'date':date,'time':time});
     } catch (e) {
       print(e);
     }
