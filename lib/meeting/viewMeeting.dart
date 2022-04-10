@@ -91,7 +91,7 @@ class _ViewMeetingState extends State<ViewMeeting> {
               color: Colors.red,
               onPressed: () {
                 widget.db.update(widget.meeting['id'], titleController.text,
-                    locationController.text);
+                    locationController.text,dateController.text,timeController.text);
                 Navigator.pop(context, true);
               },
               child: Text(
