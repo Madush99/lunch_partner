@@ -2,6 +2,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/meetingController.dart';
+import 'package:lunch_partner/meeting/datepicker.dart';
+//import 'package:lunch_partner/meeting/displaydate.dart';
+//import 'package:lunch_partner/meeting/timepicker.dart';
+//import 'package:lunch_partner/meeting/displaydate.dart';
+import 'package:lunch_partner/meeting/timepicker.dart';
 
 class AddMeeting extends StatefulWidget {
   AddMeeting({Key? key, required this.db}) : super(key: key);
@@ -24,7 +29,7 @@ class _AddMeetingState extends State<AddMeeting> {
       backgroundColor: Color.fromRGBO(218, 216, 216, 1),
       appBar: AppBar(
 
-        title: Text("Add Meeting"),
+        title: Text("Add Invitation"),
         actions: [
           IconButton(
               icon: Icon(Icons.delete),
@@ -41,7 +46,7 @@ class _AddMeetingState extends State<AddMeeting> {
             children: [
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Meeting Title"),
+                decoration: inputDecoration("Invitation Title"),
                 controller: titleController,
               ),
               SizedBox(
@@ -52,10 +57,34 @@ class _AddMeetingState extends State<AddMeeting> {
                 decoration: inputDecoration("Location"),
                 controller: locationController,
               ),
+              Container(
+                margin: EdgeInsets.all(25),
+                child: FlatButton(
+                  child: Text('Date', style: TextStyle(fontSize: 20.0),),
+                  color: Colors.redAccent,
+                  textColor: Colors.white,
+                  onPressed: () {Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Datepicker ()));},
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(25),
+                child: FlatButton(
+                  child: Text('Time', style: TextStyle(fontSize: 20.0),),
+                  color: Colors.redAccent,
+                  textColor: Colors.white,
+                  onPressed: () {Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => TimePicker()));},
+                ),
+              ),
             ],
+
           ),
         ),
+
+
       ),
+
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         color: Colors.transparent,
@@ -67,13 +96,17 @@ class _AddMeetingState extends State<AddMeeting> {
                 widget.db.create(titleController.text, locationController.text);
                 Navigator.pop(context, true);
               },
+
               child: Text(
                 "Add",
                 style: TextStyle(color: Colors.white),
               )),
         ),
+
       ),
+
     );
+
   }
 
   InputDecoration inputDecoration(String labelText) {

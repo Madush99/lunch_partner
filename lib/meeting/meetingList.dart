@@ -49,7 +49,7 @@ class _MeetingListState extends State<MeetingList>{
             },
           ),
           centerTitle: true,
-          title: Text('Meeting List')
+          title: Text('Invitation List')
       ),
       body:ListView.builder(
           itemCount: docs.length,
