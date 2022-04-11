@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lunch_partner/locationListHome.dart';
 import 'package:lunch_partner/locations/locationsList.dart';
 import 'package:lunch_partner/profile.dart';
 
@@ -9,14 +10,14 @@ import 'login.dart';
 import 'meeting/meetingList.dart';
 import 'model/userModel.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class UserHome extends StatefulWidget {
+  const UserHome({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _UserHomeState createState() => _UserHomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UserHomeState extends State<UserHome> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 
@@ -93,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: Text("location"),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LocationList()));
+                        MaterialPageRoute(builder: (context) => LocationListHome()));
                   }),
               ActionChip(
                   label: Text("Logout"),

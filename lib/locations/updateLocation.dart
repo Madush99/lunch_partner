@@ -1,30 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lunch_partner/adminHome.dart';
-import '../controller/contactController.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class ViewContact extends StatefulWidget {
-  ViewContact({Key? key, required this.contact, required this.db}) : super(key:key);
-  Map contact;
-  ContactController db;
+import '../controller/locationController.dart';
 
+class UpdateLocation extends StatefulWidget {
+  UpdateLocation({ Key? key,  required this.locations,  required this.db}) : super(key: key);
+  Map locations;
+  LocationController db;
   @override
-  _ViewContactState createState() => _ViewContactState();
+  _ViewState createState() => _ViewState();
 }
 
-class _ViewContactState extends State<ViewContact> {
+class _ViewState extends State<UpdateLocation> {
   TextEditingController nameController = new TextEditingController();
-  TextEditingController numberController = new TextEditingController();
+  TextEditingController cityController = new TextEditingController();
+  TextEditingController codeController = new TextEditingController();
   TextEditingController addressController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    print(widget.contact);
-    nameController.text = widget.contact['name'];
-    numberController.text = widget.contact['number'];
-    addressController.text = widget.contact['address'];
-    emailController.text = widget.contact['email'];
+    print(widget.locations);
+    nameController.text = widget.locations['name'];
+    cityController.text = widget.locations['city'];
+    codeController.text = widget.locations['code'];
+    addressController.text = widget.locations['address'];
   }
 
   @override
@@ -33,7 +35,7 @@ class _ViewContactState extends State<ViewContact> {
       backgroundColor: Color.fromRGBO(218, 216, 216, 1),
       appBar: AppBar(
 
-        title: Text("Contact Details"),
+        title: Text("Location Update"),
         actions: [
           IconButton(
               icon: Icon(
@@ -41,7 +43,8 @@ class _ViewContactState extends State<ViewContact> {
                 color: Colors.white,
               ),
               onPressed: () {
-                widget.db.delete(widget.contact["id"]);
+                widget.db.delete(widget.locations["id"]);
+                Fluttertoast.showToast(msg: "Location Deleted Successfully");
                 Navigator.pop(context, true);
               })
         ],
@@ -53,7 +56,7 @@ class _ViewContactState extends State<ViewContact> {
             children: [
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Contact Name"),
+                decoration: inputDecoration("Place Name"),
                 controller: nameController,
               ),
               SizedBox(
@@ -61,25 +64,25 @@ class _ViewContactState extends State<ViewContact> {
               ),
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Contact Number"),
-                controller: numberController,
+                decoration: inputDecoration("Place City"),
+                controller: cityController,
               ),
               SizedBox(
                 height: 20,
               ),
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Address"),
-                controller: addressController,
-              ), SizedBox(
+                decoration: inputDecoration("Place Code"),
+                controller: codeController,
+              ),
+              SizedBox(
                 height: 20,
               ),
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Email"),
-                controller: emailController,
+                decoration: inputDecoration("Place Address"),
+                controller: addressController,
               ),
-
             ],
           ),
         ),
@@ -89,17 +92,25 @@ class _ViewContactState extends State<ViewContact> {
         color: Colors.transparent,
         child: BottomAppBar(
           color: Colors.transparent,
-          child: RaisedButton(
-              color: Colors.red,
-              onPressed: () {
-                widget.db.update(widget.contact['id'], nameController.text,
-                    numberController.text,addressController.text,emailController.text);
-                Navigator.pop(context, true);
-              },
-              child: Text(
-                "Save",
-                style: TextStyle(color: Colors.white),
-              )),
+          child: Material(
+            elevation: 5,
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.redAccent,
+            child: MaterialButton(
+                padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+
+                onPressed: () {
+                  widget.db.update(widget.locations['id'], nameController.text, cityController.text, codeController.text, addressController.text);
+                  Fluttertoast.showToast(msg: "Location Update Successfully");
+                  Navigator.pop(context, true);
+                },
+                child: Text(
+                  "Save and Update",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                )),
+          )
         ),
       ),
     );
@@ -114,7 +125,7 @@ class _ViewContactState extends State<ViewContact> {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25.0),
         borderSide: BorderSide(
-          color: Colors.red,
+          color: Colors.black,
           width: 2.0,
         ),
       ),

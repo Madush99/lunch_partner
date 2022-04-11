@@ -1,21 +1,23 @@
-
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lunch_partner/controller/contactController.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class AddContact extends StatefulWidget {
-  AddContact({Key? key, required this.db}) : super(key: key);
-  ContactController db;
+import '../controller/locationController.dart';
+
+
+class AddLocation extends StatefulWidget {
+  AddLocation({Key? key, required this.db}) : super(key: key);
+  LocationController db;
   @override
-  _AddContactState createState() => _AddContactState();
+  _AddState createState() => _AddState();
 }
 
-class _AddContactState extends State<AddContact> {
+class _AddState extends State<AddLocation> {
   TextEditingController nameController = new TextEditingController();
-  TextEditingController numberController = new TextEditingController();
+  TextEditingController cityController = new TextEditingController();
+  TextEditingController codeController = new TextEditingController();
   TextEditingController addressController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -27,15 +29,7 @@ class _AddContactState extends State<AddContact> {
       backgroundColor: Color.fromRGBO(218, 216, 216, 1),
       appBar: AppBar(
 
-        title: Text("Add Contact"),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                // widget.db.delete(widget.country["id"]);
-                // Navigator.pop(context, true);
-              })
-        ],
+        title: Text("Add Locations"),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -44,7 +38,7 @@ class _AddContactState extends State<AddContact> {
             children: [
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Contact Name"),
+                decoration: inputDecoration("Place Name"),
                 controller: nameController,
               ),
               SizedBox(
@@ -52,24 +46,24 @@ class _AddContactState extends State<AddContact> {
               ),
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Contact Number"),
-                controller: numberController,
+                decoration: inputDecoration("Place City"),
+                controller: cityController,
               ),
               SizedBox(
                 height: 20,
               ),
               TextFormField(
                 style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Address"),
+                decoration: inputDecoration("Place Code"),
+                controller: codeController,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: TextStyle(color: Colors.black),
+                decoration: inputDecoration("Place Address"),
                 controller: addressController,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                style: TextStyle(color: Colors.black),
-                decoration: inputDecoration("Email"),
-                controller: emailController,
               ),
             ],
           ),
@@ -79,21 +73,33 @@ class _AddContactState extends State<AddContact> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         color: Colors.transparent,
         child: BottomAppBar(
-          color: Colors.transparent,
-          child: RaisedButton(
-              color: Colors.red,
-              onPressed: () {
-                widget.db.create(nameController.text, numberController.text, addressController.text, emailController.text);
-                Navigator.pop(context, true);
-              },
-              child: Text(
-                "Add",
-                style: TextStyle(color: Colors.white),
-              )),
+            color: Colors.transparent,
+            child: Material(
+              elevation: 5,
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.redAccent,
+              child: MaterialButton(
+                  padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+
+                  onPressed: () {
+                    widget.db.create(nameController.text, cityController.text, codeController.text, addressController.text);
+                    Fluttertoast.showToast(msg: "Location added Successfully");
+                    Navigator.pop(context, true);
+
+                  },
+                  child: Text(
+                    "Add",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                  )),
+
+            )
         ),
       ),
     );
   }
+
 
   InputDecoration inputDecoration(String labelText) {
     return InputDecoration(
@@ -111,7 +117,7 @@ class _AddContactState extends State<AddContact> {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25.0),
         borderSide: BorderSide(
-          color: Colors.red,
+          color: Colors.black,
           width: 2.0,
         ),
       ),

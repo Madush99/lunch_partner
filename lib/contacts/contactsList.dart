@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/contacts/addContact.dart';
 import 'package:lunch_partner/contacts/viewContact.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/adminHome.dart';
 import '../controller/contactController.dart';
 
 class ContactList extends StatefulWidget {
@@ -42,7 +42,7 @@ class _ContactListState extends State<ContactList>{
             iconSize: 20.0,
             onPressed: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => AdminHome()));
             },
           ),
           centerTitle: true,
@@ -59,7 +59,7 @@ class _ContactListState extends State<ContactList>{
                 },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['name']),
-                // trailing: Text(docs[index]['number']),
+                trailing: Text(docs[index]['number']),
               ),
             );
           }),

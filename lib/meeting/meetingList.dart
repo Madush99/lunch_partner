@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/meetingController.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/adminHome.dart';
 import 'package:lunch_partner/meeting/form.dart';
+import 'package:lunch_partner/meeting/viewMeeting.dart';
 
 //import 'package:lunch_partner/form.dart';
 
@@ -44,11 +45,11 @@ class _MeetingListState extends State<MeetingList>{
             iconSize: 20.0,
             onPressed: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => AdminHome()));
             },
           ),
           centerTitle: true,
-          title: Text('Meeting List')
+          title: Text('Invitation List')
       ),
       body:ListView.builder(
           itemCount: docs.length,
@@ -56,7 +57,9 @@ class _MeetingListState extends State<MeetingList>{
             return Card(
               margin: EdgeInsets.all(10),
               child: ListTile(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewMeeting(meeting:docs[index],db:db)));
+                },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['title']),
                 trailing: Text(docs[index]['location']),
@@ -64,20 +67,7 @@ class _MeetingListState extends State<MeetingList>{
               ),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    AddMeeting(db: db)))
-            .then((value) => {
-          if(value != null) {
-            initialise()
-          }
-        });},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+       // This trailing comma makes auto-formatting nicer for build methods.
     );// This trailing comma makes auto-formatting nicer for build methods.
   }
   _goBack(BuildContext context) {

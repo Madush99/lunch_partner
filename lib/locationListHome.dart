@@ -2,22 +2,30 @@
 import 'package:flutter/material.dart';
 import 'package:lunch_partner/controller/locationController.dart';
 import 'package:lunch_partner/adminHome.dart';
+import 'package:lunch_partner/controller/meetingController.dart';
 import 'package:lunch_partner/locations/addLocation.dart';
 import 'package:lunch_partner/locations/updateLocation.dart';
+import 'package:lunch_partner/meeting/form.dart';
+import 'package:lunch_partner/userHome.dart';
 
-class LocationList extends StatefulWidget {
-  const LocationList({Key? key}) : super(key:key);
+import 'meeting/meetingList.dart';
+
+class LocationListHome extends StatefulWidget {
+  const LocationListHome({Key? key}) : super(key:key);
 
   @override
   _LocationListState createState() => _LocationListState();
 }
 
-class _LocationListState extends State<LocationList>{
+class _LocationListState extends State<LocationListHome>{
   late LocationController db;
+  late MeetingController mdb;
   List docs = [];
 
   initialise() {
     db = LocationController();
+    mdb = MeetingController();
+    mdb.initiliase();
     db.initiliase();
     db.read().then((value) => {
       setState((){
@@ -43,8 +51,8 @@ class _LocationListState extends State<LocationList>{
             iconSize: 20.0,
             onPressed: () {
               Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => AdminHome()));
-                },
+                  MaterialPageRoute(builder: (context) => UserHome()));
+            },
           ),
           centerTitle: true,
           title: Text('Location List')
@@ -60,9 +68,11 @@ class _LocationListState extends State<LocationList>{
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              UpdateLocation(locations: docs[index],db: db)))
+                              AddMeeting(db: mdb,)))
                       .then((value) => {
-                    if(value != null) {initialise()}
+                    if(value != null) {
+                      initialise()
+                    }
                   });
                 },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
@@ -71,20 +81,7 @@ class _LocationListState extends State<LocationList>{
               ),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    AddLocation(db: db)))
-            .then((value) => {
-          if(value != null) {
-            initialise()
-          }
-        });},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
   _goBack(BuildContext context) {
