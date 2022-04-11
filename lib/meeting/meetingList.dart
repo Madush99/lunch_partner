@@ -70,20 +70,7 @@ class _MeetingListState extends State<MeetingList>{
               ),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    AddMeeting(db: db)))
-            .then((value) => {
-          if(value != null) {
-            initialise()
-          }
-        });},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+       // This trailing comma makes auto-formatting nicer for build methods.
     );// This trailing comma makes auto-formatting nicer for build methods.
   }
   _goBack(BuildContext context) {

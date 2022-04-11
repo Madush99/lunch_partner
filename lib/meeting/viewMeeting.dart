@@ -23,6 +23,8 @@ class _ViewMeetingState extends State<ViewMeeting> {
     print(widget.meeting);
     titleController.text = widget.meeting['title'];
     locationController.text = widget.meeting['location'];
+    dateController.text = widget.meeting['date'];
+    timeController.text = widget.meeting['time'];
   }
 
   @override
