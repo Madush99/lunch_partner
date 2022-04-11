@@ -58,7 +58,10 @@ class _MeetingListState extends State<MeetingList>{
               margin: EdgeInsets.all(10),
               child: ListTile(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewMeeting(meeting:docs[index],db:db)));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewMeeting(meeting:docs[index],db:db)))
+                      .then((value)=> {
+                    if(value != null) {initialise()}
+                  });
                 },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['title']),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunch_partner/adminHome.dart';
+import 'package:flutter/cupertino.dart';
 import '../controller/contactController.dart';
 
 class ViewContact extends StatefulWidget {
@@ -89,8 +89,12 @@ class _ViewContactState extends State<ViewContact> {
         color: Colors.transparent,
         child: BottomAppBar(
           color: Colors.transparent,
-          child: RaisedButton(
-              color: Colors.red,
+          child: Material(
+              elevation: 5,
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.redAccent,
+              child: MaterialButton(
+                  padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
               onPressed: () {
                 widget.db.update(widget.contact['id'], nameController.text,
                     numberController.text,addressController.text,emailController.text);
@@ -98,10 +102,11 @@ class _ViewContactState extends State<ViewContact> {
               },
               child: Text(
                 "Save",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
               )),
+          )
         ),
-      ),
+      )
     );
   }
 

@@ -55,7 +55,14 @@ class _ContactListState extends State<ContactList>{
               margin: EdgeInsets.all(10),
               child: ListTile(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewContact(contact:docs[index],db:db)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context)=>
+                              ViewContact(contact:docs[index],db:db)))
+                  .then((value)=> {
+                    if(value != null) {initialise()}
+                  });
                 },
                 contentPadding: EdgeInsets.only(right: 30,left: 36),
                 title: Text(docs[index]['name']),
@@ -78,14 +85,9 @@ class _ContactListState extends State<ContactList>{
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );// This trailing comma makes auto-formatting nicer for build methods.
-
-
   }
-
   _goBack(BuildContext context) {
     Navigator.pop(context);
   }
-
-
 }
 
