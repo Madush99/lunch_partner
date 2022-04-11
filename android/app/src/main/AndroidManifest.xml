@@ -1,10 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lunch_partner">
+
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
    <application
         android:label="lunch_partner"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
         <activity
+
+
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
