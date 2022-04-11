@@ -24,6 +24,7 @@ class _AddMeetingState extends State<AddMeeting> {
   @override
   void initState() {
     super.initState();
+    locationController.text = "Devon";
   }
 
   @override

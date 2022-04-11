@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../controller/locationController.dart';
 
@@ -82,6 +83,7 @@ class _AddState extends State<AddLocation> {
 
                   onPressed: () {
                     widget.db.create(nameController.text, cityController.text, codeController.text, addressController.text);
+                    Fluttertoast.showToast(msg: "Location added Successfully");
                     Navigator.pop(context, true);
 
                   },
@@ -91,6 +93,7 @@ class _AddState extends State<AddLocation> {
                     style: TextStyle(
                         fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
                   )),
+
             )
         ),
       ),

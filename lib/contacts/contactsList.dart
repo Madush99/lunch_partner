@@ -3,6 +3,7 @@ import 'package:lunch_partner/contacts/addContact.dart';
 import 'package:lunch_partner/contacts/viewContact.dart';
 import 'package:lunch_partner/adminHome.dart';
 import '../controller/contactController.dart';
+import '../userHome.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({Key? key}) : super(key:key);
@@ -42,7 +43,7 @@ class _ContactListState extends State<ContactList>{
             iconSize: 20.0,
             onPressed: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => AdminHome()));
+                  MaterialPageRoute(builder: (context) => UserHome()));
             },
           ),
           centerTitle: true,
