@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../controller/locationController.dart';
 
@@ -43,6 +44,7 @@ class _ViewState extends State<UpdateLocation> {
               ),
               onPressed: () {
                 widget.db.delete(widget.locations["id"]);
+                Fluttertoast.showToast(msg: "Location Deleted Successfully");
                 Navigator.pop(context, true);
               })
         ],
@@ -99,6 +101,7 @@ class _ViewState extends State<UpdateLocation> {
 
                 onPressed: () {
                   widget.db.update(widget.locations['id'], nameController.text, cityController.text, codeController.text, addressController.text);
+                  Fluttertoast.showToast(msg: "Location Update Successfully");
                   Navigator.pop(context, true);
                 },
                 child: Text(
