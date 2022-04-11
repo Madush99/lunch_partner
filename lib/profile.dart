@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lunch_partner/home.dart';
+import 'package:lunch_partner/userHome.dart';
 import 'package:lunch_partner/notification.dart';
 import 'package:lunch_partner/registration.dart';
 import 'package:lunch_partner/updateProfile.dart';

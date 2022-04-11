@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lunch_partner/home.dart';
+// import 'package:lunch_partner/home.dart';
 import 'package:lunch_partner/registration.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:telephony/telephony.dart';
